@@ -27,4 +27,15 @@ class ProductController(productService: ProductService) {
     fun getProducts(): Flux<Product> {
         return productService.getProductsButInADifferentWay()
     }
+
+    @GetMapping(value = ["/product3"], produces = [MediaType.TEXT_EVENT_STREAM_VALUE])
+    fun getProducts2(): Flux<Int> {
+        return productService.consumeSubscription()
+    }
+
+    @GetMapping(value = ["/product4"], produces = [MediaType.TEXT_EVENT_STREAM_VALUE])
+    fun getProducts3(): Flux<Int> {
+        return productService.customApproach()
+    }
+
 }

@@ -1,5 +1,7 @@
 package com.stannis.spring_reactive.services
 
+import com.stannis.spring_reactive.custom.CustomPublisher
+import com.stannis.spring_reactive.custom.CustomSubscriber
 import com.stannis.spring_reactive.model.Product
 import com.stannis.spring_reactive.repositories.ProductRepository
 import org.springframework.stereotype.Service
@@ -31,6 +33,23 @@ class ProductService(productRepository: ProductRepository) {
         return Flux.fromStream(
                 listOf(p1, p2).stream()
         )
+    }
+
+    fun consumeSubscription(): Flux<Int> {
+        val f1 = Flux.just(1, 2, 3)
+
+        f1.doOnNext { throw RuntimeException("BUM")}
+            .subscribe{ CustomSubscriber<Long>() }
+
+        return f1
+    }
+
+    fun customApproach(): Flux<Int> {
+        val f1 = CustomPublisher<Long>(listOf(1,2,3,4))
+
+        f1.subscribe(CustomSubscriber())
+
+        return Flux.just(1)
     }
 
 }

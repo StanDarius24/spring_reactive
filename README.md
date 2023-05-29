@@ -30,4 +30,10 @@ Problems:
 
 ![img.png](etc/img.png)
 
-* Difference between mono and flux its the same as one-many relation. Mono can have only 1 item, where flux can have arrays.
+* Difference between mono and flux it's the same as one-many relation. Mono can have only 1 item, where flux can have arrays.
+
+```kotlin
+val f1 = Flux.just(1, 2, 3, 4, 5) // the values need to be consumed
+
+f1.subscribe { println(it) } // here we add a subscriber to consume the Flux
+```
