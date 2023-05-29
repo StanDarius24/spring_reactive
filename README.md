@@ -41,4 +41,3 @@ f1.subscribe { println(it) } // here we add a subscriber to consume the Flux
 
 Tips:
 - every method that returns an object and not a mono or a flux, it's a blocking method (don't use)
-- 
