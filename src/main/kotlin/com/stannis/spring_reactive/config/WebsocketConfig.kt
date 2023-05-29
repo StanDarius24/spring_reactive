@@ -10,6 +10,9 @@ import reactor.core.publisher.Sinks
 @Configuration
 class WebsocketConfig {
 
+
+    // add Authorization: `Basic YmlsbDoxMjM0NQ==` in header
+    // also add a message
     @Bean
     fun handlerMapping(wsh: WebSocketHandler): SimpleUrlHandlerMapping {
         return SimpleUrlHandlerMapping(mapOf("/ws/message" to wsh), 1)
