@@ -4,6 +4,7 @@
 ---
 
 https://www.reactivemanifesto.org
+https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Flux.html
 
 ---
 
@@ -37,3 +38,7 @@ val f1 = Flux.just(1, 2, 3, 4, 5) // the values need to be consumed
 
 f1.subscribe { println(it) } // here we add a subscriber to consume the Flux
 ```
+
+Tips:
+- every method that returns an object and not a mono or a flux, it's a blocking method (don't use)
+- 
